@@ -160,20 +160,20 @@ int main()
 		printf("%d", *it);
 		cout << endl;
 	}*/
-	map<string, set<int>> dict_time;
-	for(int i = 0;i < deptEvent.size();i++)
+	map<string, set<int>> dict_time;  //建造时间段->部门下标的字典
+	for(int i = 0;i < deptEvent.size();i++)  //遍历部门
 	{
-		for(int j = 0;j < deptEvent[i].size();j++)
+		for(int j = 0;j < deptEvent[i].size();j++)  //遍历部门的时间段
 		{
-			if(dict_time.count(deptEvent[i][j]) == 0)
+			if(dict_time.count(deptEvent[i][j]) == 0)  //如果时间段没有在这个字典中
 			{
-				set<int> frees;
+				set<int> frees;  //添加字典项
 				frees.insert(i);
 				dict_time.insert(pair<string, set<int>>(deptEvent[i][j],frees));
 			}
 			else
 			{
-				dict_time[deptEvent[i][j]].insert(i);
+				dict_time[deptEvent[i][j]].insert(i);  //如果时间段已存在，就添加到对应的集合中
 			}
 		}
 	}
